@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Co-pet</title>
+<style>
+  body { font: 16px/1.5 -apple-system, system-ui, sans-serif; max-width: 28rem; margin: 20vh auto; padding: 0 1rem; text-align: center; color: #222; }
+  a { color: #2f6fde; }
+</style>
+<p id="msg">Connected. Returning to Co-pet…</p>
+<p><a id="open" href="#">Open Co-pet</a> · You can close this tab.</p>
+<script>
+  const params = new URLSearchParams(location.hash.slice(1));
+  const link = "copet://oauth/done?" + params.toString();
+  document.getElementById("open").href = link;
+  if (params.get("error")) {
+    document.getElementById("msg").textContent = "Couldn't connect. Try again from Co-pet.";
+  }
+  location.href = link;
+</script>
+</html>
