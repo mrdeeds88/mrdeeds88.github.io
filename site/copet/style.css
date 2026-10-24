@@ -1,0 +1,68 @@
+/* Colours and fonts from docs/design/design-system/tokens.css. No web fonts are loaded: Be Vietnam Pro is used when installed, else the system font. */
+:root {
+  --surface: #faf6ef;
+  --surface-raised: #ffffff;
+  --line: #e5dccd;
+  --ink: #2a211c;
+  --ink-muted: #6b5d52;
+  --clover: #1d6b57;
+  --clover-hover: #175a49;
+  --focus: #1f5fbf;
+  --font-sans: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Baloo 2", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #191613;
+    --surface-raised: #231f1b;
+    --line: #38312a;
+    --ink: #f3ece3;
+    --ink-muted: #b3a596;
+    --clover: #5ccaa6;
+    --clover-hover: #7dd8b9;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+main { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; }
+h1 { font-size: 32px; margin: 0 0 16px; }
+h2 { font-size: 22px; margin: 32px 0 8px; }
+h3 { font-size: 18px; margin: 24px 0 8px; }
+a { color: var(--clover); }
+a:hover { color: var(--clover-hover); }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+code { font-family: var(--font-mono); font-size: 0.9em; }
+.muted { color: var(--ink-muted); }
+.download {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: var(--clover);
+  color: var(--surface-raised);
+  text-decoration: none;
+  font-weight: 600;
+}
+.download:hover { background: var(--clover-hover); color: var(--surface-raised); }
+.donate { font-size: 14px; }
+.coffee {
+  display: inline-block;
+  padding: 2px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+.coffee:hover { border-color: var(--clover); color: var(--clover-hover); }
+section[lang="vi"] { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); }
+footer { margin-top: 48px; font-size: 14px; color: var(--ink-muted); }

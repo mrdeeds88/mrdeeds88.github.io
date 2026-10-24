@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Co-pet support</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<nav><a href="../">Co-pet</a> <a href="../privacy/">Privacy</a> <a href="../terms/">Terms</a> <a href="../support/">Support</a></nav>
+<h1>Support</h1>
+<h2>Install</h2>
+<p>Co-pet runs on Windows 11 (64-bit). Install it from the <a href="{{STORE_URL}}">Microsoft Store</a>, then open it from the Start menu.</p>
+<h2>Updates</h2>
+<p>Updates arrive automatically through the Microsoft Store. To check now, open the Microsoft Store, go to Library and click Get updates.</p>
+<h2>Microphone</h2>
+<p>To record meetings, Co-pet needs the microphone. If recording doesn't start, open Windows Settings › Privacy &amp; security › Microphone, make sure Microphone access is on, and allow Co-pet in the list of apps.</p>
+<h2>Your data folder</h2>
+<p>Co-pet keeps your items, files, recordings and models in <code>%USERPROFILE%\Co-pet</code>.</p>
+<h2>Local-only mode</h2>
+<p>In Settings › Privacy, turn on Local-only mode to stop every network call. Sync, cloud AI, exports and model downloads pause until you turn it off.</p>
+<h2 id="self-host">Accounts, sync and Notion/Asana sign-in</h2>
+<p>Co-pet works fully on your computer without any server. Accounts, sync between computers, and signing in to Notion or Asana with a button need a backend, and Co-pet doesn't run one for you: you connect your own free <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a> project. Notion and Asana personal tokens work without any backend: in Integrations, click Use a token instead.</p>
+<p>To set up your own backend:</p>
+<ol>
+<li>Create a free project at supabase.com and install the Supabase CLI.</li>
+<li>From a copy of the <a href="https://github.com/mrdeeds88/co-pet" target="_blank" rel="noopener">Co-pet repository</a>, link the project (<code>supabase link --project-ref &lt;ref&gt;</code>), apply the database migrations (<code>supabase db push</code>) and deploy the <code>oauth</code> and <code>delete-account</code> functions (<code>supabase functions deploy oauth --no-verify-jwt</code>, <code>supabase functions deploy delete-account</code>).</li>
+<li>Set the function secrets listed in <code>supabase/README.md</code> with <code>supabase secrets set</code>.</li>
+<li>For Notion or Asana sign-in, create your own Notion public integration and Asana app, and set their redirect URL to <code>https://&lt;ref&gt;.supabase.co/functions/v1/oauth/callback</code>. Their client ID and secret go into the function secrets, never into Co-pet.</li>
+<li>In the Supabase dashboard, Authentication › URL Configuration › Redirect URLs, add <code>copet://auth/callback</code>.</li>
+<li>In Co-pet, open Settings › Account and sync and paste your project URL (<code>https://&lt;ref&gt;.supabase.co</code>) and its publishable key.</li>
+</ol>
+<p>Only ever paste the publishable key into Co-pet. Never use the service_role or secret key: it stays in your Supabase project.</p>
+<h2>Report a problem</h2>
+<p>Open an issue at <a href="https://github.com/mrdeeds88/co-pet/issues" target="_blank" rel="noopener">github.com/mrdeeds88/co-pet/issues</a> with what you did, what happened and your Co-pet version from Settings › About.</p>
+<h2>Deleting your data</h2>
+<p>In Settings, use Delete everything to remove all Co-pet data from your computer, or Delete cloud data to remove your synced data from your Supabase project. Uninstalling Co-pet leaves the <code>%USERPROFILE%\Co-pet</code> folder in place; delete it to remove downloaded models too.</p>
+<section lang="vi">
+<h2>Hỗ trợ</h2>
+<h3>Cài đặt</h3>
+<p>Co-pet chạy trên Windows 11 (64-bit). Cài Co-pet từ <a href="{{STORE_URL}}">Microsoft Store</a>, sau đó mở từ menu Start.</p>
+<h3>Cập nhật</h3>
+<p>Bản cập nhật được Microsoft Store tự động cài. Để kiểm tra ngay, mở Microsoft Store, vào Thư viện và nhấn Nhận bản cập nhật.</p>
+<h3>Micrô</h3>
+<p>Để ghi âm cuộc họp, Co-pet cần dùng micrô. Nếu không ghi âm được, mở Cài đặt Windows › Quyền riêng tư &amp; bảo mật › Micrô, bảo đảm Quyền truy cập micrô đang bật và cho phép Co-pet trong danh sách ứng dụng.</p>
+<h3>Thư mục dữ liệu</h3>
+<p>Co-pet lưu mục, tệp, bản ghi âm và mô hình trong <code>%USERPROFILE%\Co-pet</code>.</p>
+<h3>Chế độ chỉ trên máy</h3>
+<p>Trong Cài đặt › Quyền riêng tư, bật Chế độ chỉ trên máy để dừng mọi kết nối mạng. Đồng bộ, AI đám mây, xuất dữ liệu và tải mô hình tạm dừng cho đến khi bạn tắt.</p>
+<h3>Tài khoản, đồng bộ và đăng nhập Notion/Asana</h3>
+<p>Co-pet chạy trọn vẹn trên máy tính của bạn mà không cần máy chủ nào. Tài khoản, đồng bộ giữa các máy tính và đăng nhập Notion hay Asana bằng một nút bấm cần một backend, và Co-pet không vận hành backend nào cho bạn: bạn kết nối dự án <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a> miễn phí của riêng mình. Token cá nhân của Notion và Asana dùng được mà không cần backend: trong Tích hợp, nhấn Dùng token.</p>
+<p>Để tự dựng backend:</p>
+<ol>
+<li>Tạo một dự án miễn phí trên supabase.com và cài Supabase CLI.</li>
+<li>Từ một bản sao của <a href="https://github.com/mrdeeds88/co-pet" target="_blank" rel="noopener">kho mã Co-pet</a>, liên kết dự án (<code>supabase link --project-ref &lt;ref&gt;</code>), áp dụng các migration cơ sở dữ liệu (<code>supabase db push</code>) và triển khai hai function <code>oauth</code> và <code>delete-account</code> (<code>supabase functions deploy oauth --no-verify-jwt</code>, <code>supabase functions deploy delete-account</code>).</li>
+<li>Đặt các secret của function được liệt kê trong <code>supabase/README.md</code> bằng <code>supabase secrets set</code>.</li>
+<li>Để đăng nhập Notion hoặc Asana, tạo public integration Notion và ứng dụng Asana của riêng bạn, đặt redirect URL là <code>https://&lt;ref&gt;.supabase.co/functions/v1/oauth/callback</code>. Client ID và secret của chúng nằm trong secret của function, không bao giờ nằm trong Co-pet.</li>
+<li>Trong bảng điều khiển Supabase, mục Authentication › URL Configuration › Redirect URLs, thêm <code>copet://auth/callback</code>.</li>
+<li>Trong Co-pet, mở Cài đặt › Tài khoản và đồng bộ rồi dán URL dự án (<code>https://&lt;ref&gt;.supabase.co</code>) và publishable key của dự án.</li>
+</ol>
+<p>Chỉ dán publishable key vào Co-pet. Không bao giờ dùng khóa service_role hay secret key: khóa đó chỉ nằm trong dự án Supabase của bạn.</p>
+<h3>Báo lỗi</h3>
+<p>Mở một issue tại <a href="https://github.com/mrdeeds88/co-pet/issues" target="_blank" rel="noopener">github.com/mrdeeds88/co-pet/issues</a>, kèm việc bạn đã làm, điều đã xảy ra và phiên bản Co-pet trong Cài đặt › Giới thiệu.</p>
+<h3>Xóa dữ liệu</h3>
+<p>Trong Cài đặt, dùng Xóa mọi thứ (mục Dữ liệu) để xóa toàn bộ dữ liệu Co-pet trên máy tính của bạn, hoặc Xoá dữ liệu đám mây (mục Tài khoản và đồng bộ) để xóa dữ liệu đã đồng bộ trong dự án Supabase của bạn. Gỡ cài đặt Co-pet vẫn giữ lại thư mục <code>%USERPROFILE%\Co-pet</code>; xóa thư mục đó để xóa cả các mô hình đã tải.</p>
+</section>
+<footer><a href="../">Co-pet</a> · <a href="../support/">Support</a></footer>
+</main>
+</body>
+</html>
